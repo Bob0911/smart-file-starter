@@ -2,7 +2,7 @@
   "name": "namespace-starter",
   "displayName": "Namespace Starter",
   "description": "auto write namespace when create new .cs file ",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.32.0"
   },
