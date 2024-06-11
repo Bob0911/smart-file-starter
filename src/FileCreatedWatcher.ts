@@ -1,7 +1,17 @@
-import { FileSystemWatcher, WorkspaceFolder } from "vscode";
+import { FileSystemWatcher, WorkspaceFolder, workspace } from "vscode";
 import vscode from "vscode";
 import path from "path";
 import fs from "fs/promises";
+import Mustache from "mustache";
+import fg from "fast-glob";
+type Template = {
+  name: string;
+  content: string;
+  pattern?: string;
+  regex?: string;
+};
+const configuration = workspace.getConfiguration("namespaceStarter");
+const userTemplates = configuration.get<Template[]>("templates");
 export class FileCreatedWatcher {
   private fileWatcher: FileSystemWatcher | undefined;
   private workspaceFolders: Readonly<WorkspaceFolder[]>;
@@ -62,8 +72,22 @@ export class FileCreatedWatcher {
     }
   }
   public async writeContent(filePath: string, namespace: string) {
-    const input: Array<string> = [];
-    input.push(`namespace ${namespace};`);
-    await fs.writeFile(filePath, input.join("\n"));
+    let content = "namespace {{namespace}};";
+    const template = userTemplates?.find(
+      (e) =>
+        (e.pattern && fg.sync([filePath, e.pattern])) ||
+        (e.regex && new RegExp(e.regex).test(filePath))
+    );
+    if (template) {
+      console.log(`use template name: ${template.name} from configuration`);
+      content = template.content;
+    }
+    await fs.writeFile(
+      filePath,
+      Mustache.render(content, {
+        namespace,
+        filename: path.basename(filePath, ".cs"),
+      })
+    );
   }
 }
