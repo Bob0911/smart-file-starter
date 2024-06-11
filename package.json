@@ -4,7 +4,7 @@
   "description": "auto write namespace when create new .cs file ",
   "version": "0.0.5",
   "license": "MIT",
-  "icon": "images/icon.png",
+  "icon": "img/icon.png",
   "publisher": "Bob0911",
   "engines": {
     "vscode": "^1.32.0"
