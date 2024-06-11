@@ -2,8 +2,8 @@
   "name": "namespace-starter",
   "displayName": "Namespace Starter",
   "description": "auto write namespace when create new .cs file ",
-  "version": "0.0.3",
-  "license":"MIT",
+  "version": "0.0.4",
+  "license": "MIT",
   "publisher": "Bob0911",
   "engines": {
     "vscode": "^1.32.0"
@@ -23,7 +23,9 @@
     ".NET"
   ],
   "activationEvents": [
-    "onLanguage:csharp"
+    "onLanguage:csharp",
+    "workspaceContains:**/*.csproj",
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
