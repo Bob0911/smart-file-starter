@@ -3,7 +3,7 @@ import vscode from "vscode";
 import path from "path";
 import fs from "fs/promises";
 import Mustache from "mustache";
-import fg from "fast-glob";
+import { minimatch } from "minimatch";
 type Template = {
   name: string;
   content: string;
@@ -75,7 +75,7 @@ export class FileCreatedWatcher {
     let content = "namespace {{namespace}};";
     const template = userTemplates?.find(
       (e) =>
-        (e.pattern && fg.sync([filePath, e.pattern])) ||
+        (e.pattern && minimatch(filePath, e.pattern)) ||
         (e.regex && new RegExp(e.regex).test(filePath))
     );
     if (template) {

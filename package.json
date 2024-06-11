@@ -82,10 +82,8 @@
     "@vscode/test-cli": "^0.0.9",
     "@vscode/test-electron": "^2.4.0",
     "eslint": "^8.57.0",
-    "typescript": "^5.4.5"
-  },
-  "dependencies": {
-    "fast-glob": "^3.3.2",
+    "typescript": "^5.4.5",
+    "minimatch": "^9.0.4",
     "mustache": "^4.2.0"
   }
 }
