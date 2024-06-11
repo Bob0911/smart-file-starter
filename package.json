@@ -1,10 +1,10 @@
 {
-  "name": "smart-file-starter",
-  "displayName": "smart file starter",
-  "description": "",
+  "name": "namespace-starter",
+  "displayName": "Namespace Starter",
+  "description": "auto write namespace when create new .cs file ",
   "version": "0.0.1",
   "engines": {
-    "vscode": "^1.90.0"
+    "vscode": "^1.32.0"
   },
   "categories": [
     "Other"
@@ -23,7 +23,7 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.90.0",
+    "@types/vscode": "^1.32.0",
     "@types/mocha": "^10.0.6",
     "@types/node": "18.x",
     "@typescript-eslint/eslint-plugin": "^7.11.0",
