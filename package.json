@@ -7,8 +7,13 @@
     "vscode": "^1.32.0"
   },
   "categories": [
-    "Other"
+    "Programming Languages",
+    "Snippets"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Bob0911/smart-file-starter"
+  },
   "activationEvents": [
     "workspaceContains:**/*.csproj"
   ],
