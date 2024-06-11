@@ -6,6 +6,7 @@ import { FileCreatedWatcher } from "./FileCreatedWatcher";
 // Your extension is activated the very first time the command is executed
 let watcher: FileCreatedWatcher | undefined;
 export function activate(context: vscode.ExtensionContext) {
+  console.log("🤞 Extension Activited!");
   if (vscode.workspace.workspaceFolders?.length) {
     watcher = new FileCreatedWatcher(vscode.workspace.workspaceFolders);
     watcher.register();
@@ -13,5 +14,6 @@ export function activate(context: vscode.ExtensionContext) {
 }
 // This method is called when your extension is deactivated
 export function deactivate() {
+  console.log("👉👈 Extension Deactivited!");
   watcher?.unregister();
 }
